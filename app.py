@@ -5,7 +5,7 @@ st.set_page_config(
 )
 
 
-home_page = st.Page("Home.py", title="Home", icon=":material/home:")
+home_page = st.Page("Home.py", title="", icon=":material/home:")
 about_page = st.Page("About.py", title="About", icon=":material/contact_page:")
 faq_page = st.Page("Faq.py", title="Faq", icon=":material/help:")
 
