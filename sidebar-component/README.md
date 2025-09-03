@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+**Disclosure**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+So I decided not to support this package nay further. There are far better options out there like [streamlt Antd Components](https://nicedouble-streamlitantdcomponentsdemo-app-middmy.streamlit.app/) ([github](https://github.com/nicedouble/StreamlitAntdComponents)) I stumbled upon. This offers nested nav options - which was what I implemented in the latest update but its already available in this package. Combine that with the switch_page function to navigate between pages. All the best.
 
-## Available Scripts
+**Update**
+I built a new sidebar component [here](https://github.com/Socvest/streamit-custom-sidebar). Will build other sidebar templates inside of this repo including the hover effect that the `streamlit-on-Hover-tabs` component was built on.  
 
-In the project directory, you can run:
+# streamlit-on-Hover-tabs
+Custom tabs for on hover streamlit navigation bar created by custom css
 
-### `npm start`
+![demonstration-on-hover.gif](./img/demonstration-on-hover.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+on-hover-tabs is a component meant for a custom navigation bar like the above created via custom CSS. The CSS is also included in the repository. 
+- Its possible to chose custom icons which is enabled via https://fonts.google.com/icons
+- Plans to also adjust the sidebar via the python code is also in the works (like colour etc, but you can enter into the style css and do this yourself)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Its built on the [streamlit custom components typescript template](https://github.com/streamlit/component-template)
 
-### `npm test`
+To install it:
+```
+pip install streamlit-on-Hover-tabs
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Variables**
 
-### `npm run build`
+- tabName: This is the name of the tab
+- iconName: This is the name of the icon you wish to use in the sidebar
+- styles: Borrowed an implementation from the wonderful [Victoryhb](https://github.com/victoryhb/streamlit-option-menu) implementation. It just has four html elements with css styles which you can adapt as you would if you were in a css file. It employs styles from glamor which allows for other implementations like hover, active etc as demonstrated below. Now you can create your own navigation bar and customize the tabs to meet the specs of your custom tab. 
+    - 'navtab' which is the div container that contains the tabs
+    - 'all-tabs-options' is the parent element of 'tabStyle' below.
+    - 'tabStyle' which is the li container that contains the icons and tabName. Use this to control the active and hover design features. 
+    - 'iconStyle' which is the icon tag that contains the icons
+    - 'labelName' which is the list tag that contains the tabName
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You need to save the style.css file in your directory. Its located [here](https://github.com/Socvest/streamlit-on-Hover-tabs/tree/main/st_on_hover_tabs)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Examples:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+from st_on_hover_tabs import on_hover_tabs
+import streamlit as st
+st.set_page_config(layout="wide")
 
-### `npm run eject`
+st.header("Custom tab component for on-hover navigation bar")
+st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+with st.sidebar:
+    tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], 
+                         iconName=['dashboard', 'money', 'economy'], default_choice=0)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+if tabs =='Dashboard':
+    st.title("Navigation Bar")
+    st.write('Name of option is {}'.format(tabs))
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+elif tabs == 'Money':
+    st.title("Paper")
+    st.write('Name of option is {}'.format(tabs))
 
-## Learn More
+elif tabs == 'Economy':
+    st.title("Tom")
+    st.write('Name of option is {}'.format(tabs))
+    
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To implement with styles:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+(These are the current default CSS styles for the tabs)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+with st.sidebar:
+        tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], 
+                             iconName=['dashboard', 'money', 'economy'],
+                             styles = {'navtab': {'background-color':'#111',
+                                                  'color': '#818181',
+                                                  'font-size': '18px',
+                                                  'transition': '.3s',
+                                                  'white-space': 'nowrap',
+                                                  'text-transform': 'uppercase'},
+                                       'tabStyle': {':hover :hover': {'color': 'red',
+                                                                      'cursor': 'pointer'}},
+                                       'tabStyle' : {'list-style-type': 'none',
+                                                     'margin-bottom': '30px',
+                                                     'padding-left': '30px'},
+                                       'iconStyle':{'position':'fixed',
+                                                    'left':'7.5px',
+                                                    'text-align': 'left'},
+                                       },
+                             key="1")
+```
