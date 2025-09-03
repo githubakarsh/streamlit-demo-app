@@ -3,6 +3,8 @@ import importlib.util
 from pathlib import Path
 import sys
 
+from sidebar_component.sidebar_comp import on_hover_tabs
+
 st.set_page_config(
     page_title="Streamlit demo application",
 )
