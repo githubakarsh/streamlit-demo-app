@@ -1,25 +1,9 @@
 import streamlit as st
-import importlib.util
-from pathlib import Path
-import sys
-
-from sidebar_component.sidebar_comp import on_hover_tabs
+from floating_sidebar import floating_sidebar
 
 st.set_page_config(
     page_title="Streamlit demo application",
 )
-
-# Load the custom sidebar component from the local repository
-component_path = Path(__file__).parent / "sidebar-component" / "sidebar-comp" / "__init__.py"
-spec = importlib.util.spec_from_file_location("sidebar_tabs", component_path)
-sidebar_tabs = importlib.util.module_from_spec(spec)
-sys.modules[spec.name] = sidebar_tabs
-spec.loader.exec_module(sidebar_tabs)
-on_hover_tabs = sidebar_tabs.on_hover_tabs
-
-# Apply the sidebar CSS styles
-css_path = Path(__file__).parent / "sidebar-component" / "sidebar-comp" / "style.css"
-st.markdown('<style>' + css_path.read_text() + '</style>', unsafe_allow_html=True)
 
 architecture_drift = st.Page(
     "pages/dashboard/ArchitectureDrift.py",
@@ -65,7 +49,7 @@ chat_page = st.Page(
     icon=":material/chat_bubble:",
 )
 
-# Map display names to Page objects and icons for the sidebar component
+# Map display names to Page objects for the sidebar component
 page_names = [
     "Architecture Drift",
     "HLDD Generation",
@@ -75,16 +59,6 @@ page_names = [
     "AWS Well Architected",
     "ADR Insight",
     "Chat Assistant",
-]
-icons = [
-    "add_box",
-    "add_box",
-    "stat_3",
-    "receipt",
-    "login",
-    "domain",
-    "trip_origin",
-    "chat_bubble",
 ]
 pages = [
     architecture_drift,
@@ -98,8 +72,7 @@ pages = [
 ]
 page_map = dict(zip(page_names, pages))
 
-with st.sidebar:
-    selection = on_hover_tabs(tabName=page_names, iconName=icons, default_choice=0)
+selection = floating_sidebar(page_names, key="floating_sidebar")
 
 page_map[selection].run()
 
