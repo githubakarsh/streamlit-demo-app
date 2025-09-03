@@ -1,6 +1,7 @@
 import streamlit as st
 import importlib.util
 from pathlib import Path
+import sys
 
 st.set_page_config(
     page_title="Streamlit demo application",
@@ -10,6 +11,7 @@ st.set_page_config(
 component_path = Path(__file__).parent / "sidebar-component" / "sidebar-comp" / "__init__.py"
 spec = importlib.util.spec_from_file_location("sidebar_tabs", component_path)
 sidebar_tabs = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = sidebar_tabs
 spec.loader.exec_module(sidebar_tabs)
 on_hover_tabs = sidebar_tabs.on_hover_tabs
 
