@@ -9,9 +9,15 @@ if _RELEASE:
     root_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(root_dir, "frontend/build")
 
+    if not os.path.isdir(build_dir):
+        raise FileNotFoundError(
+            f"Cannot find frontend build directory at {build_dir}. "
+            "Run 'npm install && npm run build' inside 'sidebar_component/sidebar_comp/frontend'"
+        )
+
     _on_hover_tabs = components.declare_component(
         "on_hover_tabs",
-        path = build_dir
+        path=build_dir
     )
 
 else:
