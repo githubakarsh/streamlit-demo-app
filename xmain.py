@@ -1,23 +1,10 @@
 import streamlit as st
-from sidebar_component.sidebar import on_hover_tabs
 
 st.set_page_config(
     page_title="Streamlit demo application",
 )
 
-# Load custom sidebar CSS for the on-hover tabs component
-st.markdown(
-    '<style>' + open('sidebar_component/sidebar/style.css').read() + '</style>',
-    unsafe_allow_html=True,
-)
-
-# Render the custom on-hover sidebar tabs
-# with st.sidebar:
-#     _selected_section = on_hover_tabs(
-#         tabName=['Dashboard', 'Design', 'Review', 'Chat'],
-#         iconName=['dashboard', 'engineering', 'fact_check', 'chat'],
-#         key="main_nav_tabs",
-#     )
+st.sidebar.backgroundColor = "red"
 
 architecture_drift = st.Page("pages/dashboard/ArchitectureDrift.py", title="Architecture Drift", icon=":material/add_box:")
 
@@ -32,12 +19,12 @@ adr_insight = st.Page("pages/review/ADR_Insight.py", title="ADR Insight", icon="
 chat_page = st.Page("pages/chat/Chatbot.py", title="Chat Assistant", icon=":material/chat_bubble:")
 
 
-pages = {
 
+pages = {
     "Dashboard" : [architecture_drift],
-    "Design " : [hldd_generation, hldd_upgrade],
-    "Review " : [hldd_standard, privileged_access, aws_well_architectured, adr_insight],
-    "Chat " : [chat_page]
+    "Design" : [hldd_generation, hldd_upgrade],
+    "Review" : [hldd_standard, privileged_access, aws_well_architectured, adr_insight],
+    "Chat" : [chat_page]
 }
 
 
