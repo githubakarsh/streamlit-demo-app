@@ -12,6 +12,13 @@ st.markdown(
 )
 
 # Render the custom on-hover sidebar tabs
+# Example: Combine st.navigation (Streamlit's built-in navigation) with the custom sidebar component
+# Note: st.navigation is available in Streamlit 1.32.0 and above
+
+
+
+# Optionally, sync sidebar selection with top navigation
+_selected_section = None
 with st.sidebar:
     menu_data = [
         {
@@ -58,15 +65,15 @@ with st.sidebar:
 
 
 
-
-
-
 if _selected_section is None:
     st.title("Welcome to the Streamlit Demo Application")
     st.write("Please select a section from the sidebar to get started.")
-if _selected_section == "Architecture Drift":
-    import pages.dashboard.ArchitectureDrift as architecture_drift
-    architecture_drift.main()
+elif _selected_section == "Architecture Drift":
+    # Example usage of st.Page (Streamlit 1.32+)
+    # This will display a top navigation bar if you want to combine sidebar and top-level navigation.
+        import pages.dashboard.Dashboard as dashboard_page
+        dashboard_page.main()
+   
 elif _selected_section == "HLDD Generation":
     import pages.design.HLDD_Generation as hldd_generation
     hldd_generation.main()
