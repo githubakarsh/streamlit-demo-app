@@ -13,11 +13,42 @@ st.markdown(
 
 # Render the custom on-hover sidebar tabs
 with st.sidebar:
-    _selected_section = on_hover_tabs(
-        tabName=['Dashboard', 'Design', 'Review', 'Chat'],
-        iconName=['dashboard', 'engineering', 'fact_check', 'chat'],
-        key="main_nav_tabs",
-    )
+    menu_data = [
+        {
+            "label": "Dashboard",
+            "icon": "dashboard",
+            "children": [
+                {"label": "Architecture Drift", "icon": "add_box"},
+            ],
+        },
+        {
+            "label": "Design",
+            "icon": "engineering",
+            "children": [
+                {"label": "HLDD Generation", "icon": "add_box"},
+                {"label": "HLDD Upgrade", "icon": "stat_3"},
+            ],
+        },
+        {
+            "label": "Review",
+            "icon": "fact_check",
+            "children": [
+                {"label": "HLDD Standard", "icon": "receipt"},
+                {"label": "Privileged Access Management", "icon": "login"},
+                {"label": "AWS Well Architected", "icon": "domain"},
+                {"label": "ADR Insight", "icon": "trip_origin"},
+            ],
+        },
+        {
+            "label": "Chat",
+            "icon": "chat",
+            "children": [
+                {"label": "Chat Assistant", "icon": "chat_bubble"},
+            ],
+        },
+    ]
+
+    _selected_section = on_hover_tabs(menu_data=menu_data, key="main_nav_tabs")
 
 architecture_drift = st.Page("pages/dashboard/ArchitectureDrift.py", title="Architecture Drift", icon=":material/add_box:")
 
@@ -33,11 +64,10 @@ chat_page = st.Page("pages/chat/Chatbot.py", title="Chat Assistant", icon=":mate
 
 
 pages = {
-
-    "Dashboard" : [architecture_drift],
-    "Design " : [hldd_generation, hldd_upgrade],
-    "Review " : [hldd_standard, privileged_access, aws_well_architectured, adr_insight],
-    "Chat " : [chat_page]
+    "Dashboard": [architecture_drift],
+    "Design": [hldd_generation, hldd_upgrade],
+    "Review": [hldd_standard, privileged_access, aws_well_architectured, adr_insight],
+    "Chat": [chat_page],
 }
 
 
