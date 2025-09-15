@@ -1,3 +1,5 @@
 import streamlit as st
 
-st.write("Architecture drift page here")
+
+def main():
+    st.write("Architecture drift page here")

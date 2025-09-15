@@ -50,28 +50,41 @@ with st.sidebar:
 
     _selected_section = on_hover_tabs(menu_data=menu_data, key="main_nav_tabs")
 
-# architecture_drift = st.Page("pages/dashboard/ArchitectureDrift.py", title="Architecture Drift", icon=":material/add_box:")
 
-# hldd_generation = st.Page("pages/design/HLDD_Generation.py", title="HLDD Generation", icon=":material/add_box:")
-# hldd_upgrade = st.Page("pages/design/HLDD_Upgrade.py", title="HLDD Upgrade", icon=":material/stat_3:")
+# Adjust the following logic based on what is printed by the debug statement above.
+# For example, if _selected_section is a string like "Architecture Drift", use that in your checks.
 
-# hldd_standard = st.Page("pages/review/HLDD_Standard.py", title="HLDD Standard", icon=":material/receipt:")
-# privileged_access = st.Page("pages/review/PrivilegedAccess.py", title="Privileged Access Management", icon=":material/login:")
-# aws_well_architectured = st.Page("pages/review/AWS_Well_Architected.py", title="AWS Well Architected", icon=":material/domain:")
-# adr_insight = st.Page("pages/review/ADR_Insight.py", title="ADR Insight", icon=":material/trip_origin:")
-
-# chat_page = st.Page("pages/chat/Chatbot.py", title="Chat Assistant", icon=":material/chat_bubble:")
-
-
-# pages = {
-#     "Dashboard": [architecture_drift],
-#     "Design": [hldd_generation, hldd_upgrade],
-#     "Review": [hldd_standard, privileged_access, aws_well_architectured, adr_insight],
-#     "Chat": [chat_page],
-# }
+# 
 
 
 
-# pg = st.navigation(pages)
 
-# pg.run()
+
+
+if _selected_section is None:
+    st.title("Welcome to the Streamlit Demo Application")
+    st.write("Please select a section from the sidebar to get started.")
+if _selected_section == "Architecture Drift":
+    import pages.dashboard.ArchitectureDrift as architecture_drift
+    architecture_drift.main()
+elif _selected_section == "HLDD Generation":
+    import pages.design.HLDD_Generation as hldd_generation
+    hldd_generation.main()
+elif _selected_section == "HLDD Upgrade":
+    import pages.design.HLDD_Upgrade as hldd_upgrade
+    hldd_upgrade.main()
+elif _selected_section == "HLDD Standard":
+    import pages.review.HLDD_Standard as hldd_standard
+    hldd_standard.main()
+elif _selected_section == "Privileged Access Management":
+    import pages.review.PrivilegedAccess as privileged_access
+    privileged_access.main()
+elif _selected_section == "AWS Well Architected":
+    import pages.review.AWS_Well_Architected as aws_well_architectured
+    aws_well_architectured.main()
+elif _selected_section == "ADR Insight":
+    import pages.review.ADR_Insight as adr_insight
+    adr_insight.main()
+elif _selected_section == "Chat Assistant":
+    import pages.chat.Chatbot as chat_page
+    chat_page.main()

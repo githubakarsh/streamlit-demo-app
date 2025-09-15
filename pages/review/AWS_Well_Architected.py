@@ -1,3 +1,6 @@
 import streamlit as st
 
-st.write("AWS well architectured page here")
+
+def main():
+
+    st.write("AWS well architectured page here")

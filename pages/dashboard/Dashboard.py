@@ -1,3 +1,4 @@
 import streamlit as st
 
-st.write("Dashboard page here")
+def main():
+    st.write("Dashboard page here")

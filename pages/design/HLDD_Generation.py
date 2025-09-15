@@ -1,3 +1,5 @@
 import streamlit as st
 
-st.write("HLDD generation page here")
+
+def main():
+    st.write("HLDD generation page here")
