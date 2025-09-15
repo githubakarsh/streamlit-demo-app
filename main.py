@@ -12,12 +12,12 @@ st.markdown(
 )
 
 # Render the custom on-hover sidebar tabs
-# with st.sidebar:
-#     _selected_section = on_hover_tabs(
-#         tabName=['Dashboard', 'Design', 'Review', 'Chat'],
-#         iconName=['dashboard', 'engineering', 'fact_check', 'chat'],
-#         key="main_nav_tabs",
-#     )
+with st.sidebar:
+    _selected_section = on_hover_tabs(
+        tabName=['Dashboard', 'Design', 'Review', 'Chat'],
+        iconName=['dashboard', 'engineering', 'fact_check', 'chat'],
+        key="main_nav_tabs",
+    )
 
 architecture_drift = st.Page("pages/dashboard/ArchitectureDrift.py", title="Architecture Drift", icon=":material/add_box:")
 

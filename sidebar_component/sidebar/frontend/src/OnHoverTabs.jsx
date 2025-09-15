@@ -9,6 +9,41 @@ import "./component.css";
 import "./icons/icon.css";
 
 class OnHoverTabs extends StreamlitComponentBase {
+  /**
+   * Expects props.args.menuData to be an array of:
+   * [
+   *   {
+   *     label: "Parent 1",
+   *     icon: "home",
+   *     children: [
+   *       { label: "Child 1", icon: "star" },
+   *       { label: "Child 2", icon: "settings" }
+   *     ]
+   *   },
+   *   ...
+   * ]
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedParent: null,
+      selectedChild: null,
+    };
+  }
+
+  handleParentClick = (parent) => {
+    this.setState(
+      { selectedParent: parent, selectedChild: null },
+      () => Streamlit.setComponentValue(parent.label)
+    );
+  };
+
+  handleChildClick = (parent, child) => {
+    this.setState(
+      { selectedParent: parent, selectedChild: child },
+      () => Streamlit.setComponentValue(child.label)
+    );
+  };
   render = () => {
     const labelName = this.props.args["tabName"];
     const iconName = this.props.args["iconName"];
