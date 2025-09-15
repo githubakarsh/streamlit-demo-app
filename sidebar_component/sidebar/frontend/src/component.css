@@ -1,11 +1,11 @@
 .navtab {
-    background-color:#111;
-    color: #818181;
+    background-color:#0e59a4;
+    color: white;
     font-size: 18px;
     transition: .3s;
     white-space: nowrap;
-    text-transform: uppercase;
     /* padding-top: 150px;   */
+    max-width: 400px;
 }
 
 
@@ -18,7 +18,7 @@
 
 /* We use the unordered list component to make sure when we hover, he colour changes and the pointer too */
 .tab-container :hover {
-    color: #f1f1f1;
+    color: white;
     cursor: pointer;   
 }
 
