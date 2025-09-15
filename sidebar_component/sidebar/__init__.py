@@ -9,19 +9,19 @@ if _RELEASE:
     root_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(root_dir, "frontend/build")
 
-    _on_hover_tabs = components.declare_component(
-        "on_hover_tabs",
-        path = build_dir
+    _side_nav = components.declare_component(
+        "side_nav",
+        path=build_dir,
     )
 
 else:
-    _on_hover_tabs = components.declare_component(
-    "on_hover_tabs",
-    url="http://localhost:3001"
+    _side_nav = components.declare_component(
+        "side_nav",
+        url="http://localhost:3001",
     )
 
-def on_hover_tabs(menu_data, styles=None, default_choice=0, key=None):
-    """Render the on-hover sidebar tabs with optional child items.
+def side_nav(menu_data, styles=None, default_choice=0, key=None):
+    """Render the custom side navigation with optional child items.
 
     Args:
         menu_data (list[dict]): List of dictionaries defining each parent tab.
@@ -40,34 +40,9 @@ def on_hover_tabs(menu_data, styles=None, default_choice=0, key=None):
 
     default_label = menu_data[default_choice]["label"] if menu_data else ""
 
-    component_value = _on_hover_tabs(
-        menuData=menu_data, styles=styles, key=key, default=default_label
+    component_value = _side_nav(
+        menuData=menu_data, styles=styles, key=key, default=default_label,
     )
 
     return component_value
 
-if not _RELEASE:
-    st.subheader("Component that creates tabs corresponding with on hover sidebar")
-    st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True) # Load the on hover side bar css file
-
-
-
-    with st.sidebar:
-         demo_menu = [
-             {"label": "Dashboard", "icon": "dashboard"},
-             {"label": "Money", "icon": "money"},
-             {"label": "Economy", "icon": "economy"},
-         ]
-         tabs = on_hover_tabs(menu_data=demo_menu, key="1")  ## create tabs for on hover navigation bar
-
-    if tabs == 'Dashboard':
-        st.title("Navigation Bar")
-        st.write('Name of option is {}'.format(tabs))
-
-    elif tabs == 'Money':
-        st.title("Paper")
-        st.write('Name of option is {}'.format(tabs))
-
-    elif tabs == 'Economy':
-        st.title("Tom")
-        st.write('Name of option is {}'.format(tabs))

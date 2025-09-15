@@ -1,23 +1,72 @@
 import streamlit as st
-from sidebar_component.sidebar import on_hover_tabs
+from sidebar_component.sidebar import side_nav
 
 st.set_page_config(
     page_title="Streamlit demo application",
 )
 
-# Load custom sidebar CSS for the on-hover tabs component
+# Load custom sidebar CSS for the side navigation component
 st.markdown(
     '<style>' + open('sidebar_component/sidebar/style.css').read() + '</style>',
     unsafe_allow_html=True,
 )
 
-# Render the custom on-hover sidebar tabs
-# Example: Combine st.navigation (Streamlit's built-in navigation) with the custom sidebar component
-# Note: st.navigation is available in Streamlit 1.32.0 and above
+# Define Streamlit pages for navigation
+architecture_drift = st.Page(
+    "pages/dashboard/ArchitectureDrift.py",
+    title="Architecture Drift",
+    icon=":material/add_box:",
+)
+hldd_generation = st.Page(
+    "pages/design/HLDD_Generation.py",
+    title="HLDD Generation",
+    icon=":material/add_box:",
+)
+hldd_upgrade = st.Page(
+    "pages/design/HLDD_Upgrade.py",
+    title="HLDD Upgrade",
+    icon=":material/stat_3:",
+)
+hldd_standard = st.Page(
+    "pages/review/HLDD_Standard.py",
+    title="HLDD Standard",
+    icon=":material/receipt:",
+)
+privileged_access = st.Page(
+    "pages/review/PrivilegedAccess.py",
+    title="Privileged Access Management",
+    icon=":material/login:",
+)
+aws_well_architectured = st.Page(
+    "pages/review/AWS_Well_Architected.py",
+    title="AWS Well Architected",
+    icon=":material/domain:",
+)
+adr_insight = st.Page(
+    "pages/review/ADR_Insight.py",
+    title="ADR Insight",
+    icon=":material/trip_origin:",
+)
+chat_page = st.Page(
+    "pages/chat/Chatbot.py",
+    title="Chat Assistant",
+    icon=":material/chat_bubble:",
+)
 
+pages = {
+    "Dashboard": [architecture_drift],
+    "Design": [hldd_generation, hldd_upgrade],
+    "Review": [
+        hldd_standard,
+        privileged_access,
+        aws_well_architectured,
+        adr_insight,
+    ],
+    "Chat": [chat_page],
+}
 
+pg = st.navigation(pages)
 
-# Optionally, sync sidebar selection with top navigation
 _selected_section = None
 with st.sidebar:
     menu_data = [
@@ -55,43 +104,20 @@ with st.sidebar:
         },
     ]
 
-    _selected_section = on_hover_tabs(menu_data=menu_data, key="main_nav_tabs")
+    _selected_section = side_nav(menu_data=menu_data, key="main_nav_tabs")
 
+page_lookup = {
+    "Architecture Drift": architecture_drift,
+    "HLDD Generation": hldd_generation,
+    "HLDD Upgrade": hldd_upgrade,
+    "HLDD Standard": hldd_standard,
+    "Privileged Access Management": privileged_access,
+    "AWS Well Architected": aws_well_architectured,
+    "ADR Insight": adr_insight,
+    "Chat Assistant": chat_page,
+}
 
-# Adjust the following logic based on what is printed by the debug statement above.
-# For example, if _selected_section is a string like "Architecture Drift", use that in your checks.
-
-# 
-
-
-
-if _selected_section is None:
-    st.title("Welcome to the Streamlit Demo Application")
-    st.write("Please select a section from the sidebar to get started.")
-elif _selected_section == "Architecture Drift":
-    # Example usage of st.Page (Streamlit 1.32+)
-    # This will display a top navigation bar if you want to combine sidebar and top-level navigation.
-        import pages.dashboard.Dashboard as dashboard_page
-        dashboard_page.main()
-   
-elif _selected_section == "HLDD Generation":
-    import pages.design.HLDD_Generation as hldd_generation
-    hldd_generation.main()
-elif _selected_section == "HLDD Upgrade":
-    import pages.design.HLDD_Upgrade as hldd_upgrade
-    hldd_upgrade.main()
-elif _selected_section == "HLDD Standard":
-    import pages.review.HLDD_Standard as hldd_standard
-    hldd_standard.main()
-elif _selected_section == "Privileged Access Management":
-    import pages.review.PrivilegedAccess as privileged_access
-    privileged_access.main()
-elif _selected_section == "AWS Well Architected":
-    import pages.review.AWS_Well_Architected as aws_well_architectured
-    aws_well_architectured.main()
-elif _selected_section == "ADR Insight":
-    import pages.review.ADR_Insight as adr_insight
-    adr_insight.main()
-elif _selected_section == "Chat Assistant":
-    import pages.chat.Chatbot as chat_page
-    chat_page.main()
+if _selected_section:
+    page_lookup[_selected_section].run()
+else:
+    pg.run()
