@@ -20,10 +20,30 @@ else:
     url="http://localhost:3001"
     )
 
-def on_hover_tabs(tabName, iconName, styles=None, default_choice=1, key=None):
-    
-    component_value = _on_hover_tabs(tabName=tabName, iconName=iconName, styles=styles, key=key, default=tabName[default_choice])
-    
+def on_hover_tabs(menu_data, styles=None, default_choice=0, key=None):
+    """Render the on-hover sidebar tabs with optional child items.
+
+    Args:
+        menu_data (list[dict]): List of dictionaries defining each parent tab.
+            Each dictionary requires ``label`` and ``icon`` keys and may include
+            a ``children`` key with a list of similar dictionaries for child
+            items.
+        styles (dict, optional): Optional style overrides passed to the
+            component. Defaults to ``None``.
+        default_choice (int, optional): Index of the menu item to select by
+            default. Defaults to ``0``.
+        key (str, optional): Streamlit component key. Defaults to ``None``.
+
+    Returns:
+        str: The label of the selected menu item.
+    """
+
+    default_label = menu_data[default_choice]["label"] if menu_data else ""
+
+    component_value = _on_hover_tabs(
+        menuData=menu_data, styles=styles, key=key, default=default_label
+    )
+
     return component_value
 
 if not _RELEASE:
@@ -33,11 +53,14 @@ if not _RELEASE:
 
 
     with st.sidebar:
-         tabs = on_hover_tabs(tabName=['Dashboard', 'Money', 'Economy'], 
-                              iconName=['dashboard', 'money', 'economy'], 
-                              key="1") ## create tabs for on hover navigation bar
+         demo_menu = [
+             {"label": "Dashboard", "icon": "dashboard"},
+             {"label": "Money", "icon": "money"},
+             {"label": "Economy", "icon": "economy"},
+         ]
+         tabs = on_hover_tabs(menu_data=demo_menu, key="1")  ## create tabs for on hover navigation bar
 
-    if tabs =='Dashboard':
+    if tabs == 'Dashboard':
         st.title("Navigation Bar")
         st.write('Name of option is {}'.format(tabs))
 

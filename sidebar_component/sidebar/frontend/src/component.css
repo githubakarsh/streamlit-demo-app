@@ -29,5 +29,17 @@
     position:fixed;
     left:7.5px;
     text-align: left;
-    
+
+}
+
+/* Styles for child menu items */
+.child-tabs {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+.child-tab {
+    list-style-type: none;
+    margin-bottom: 15px;
+    padding-left: 30px;
 }
