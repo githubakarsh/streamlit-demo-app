@@ -1,0 +1,306 @@
+
+<div style="border: 1px solid black;">
+    <p>Architect Drift Examples</p>
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="black" stroke-width="2">
+        <!-- A few hexes -->
+        <polygon points="20,12 26,16 26,24 20,28 14,24 14,16"/>
+        <polygon points="34,12 40,16 40,24 34,28 28,24 28,16"/>
+        <polygon points="20,30 26,34 26,42 20,46 14,42 14,34"/>
+        <!-- Drifted hex -->
+        <g transform="translate(10,6)">
+          <polygon points="34,30 40,34 40,42 34,46 28,42 28,34" stroke="red"/>
+        </g>
+      </svg>
+
+      
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
+     viewBox="0 0 64 64" fill="none" stroke="black" stroke-width="2">
+
+  <!-- Base aligned blocks -->
+  <rect x="10" y="10" width="15" height="15"/>
+  <rect x="30" y="10" width="15" height="15"/>
+  <rect x="10" y="30" width="15" height="15"/>
+  
+  <!-- Drifted block -->
+  <rect x="33" y="35" width="15" height="15" stroke="red"/>
+</svg>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
+     viewBox="0 0 64 64" fill="none" stroke="black" stroke-width="2">
+
+  <!-- Grid lines -->
+  <rect x="8" y="8" width="48" height="48"/>
+  <line x1="24" y1="8" x2="24" y2="56"/>
+  <line x1="40" y1="8" x2="40" y2="56"/>
+  <line x1="8" y1="24" x2="56" y2="24"/>
+  <line x1="8" y1="40" x2="56" y2="40"/>
+  
+  <!-- Drifted square -->
+  <rect x="42" y="42" width="12" height="12" fill="red"/>
+</svg>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
+     viewBox="0 0 64 64" fill="none" stroke="black" stroke-width="2">
+
+  <!-- Stacked layers -->
+  <rect x="12" y="14" width="40" height="8"/>
+  <rect x="12" y="28" width="40" height="8"/>
+  
+  <!-- Drifted / shifted layer -->
+  <rect x="16" y="42" width="40" height="8" stroke="red"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="black" stroke-width="2">
+    <!-- Blueprint frame -->
+    <rect x="8" y="8" width="48" height="48" rx="2"/>
+    <!-- Planned module -->
+    <rect x="18" y="18" width="18" height="18"/>
+    <rect x="36" y="28" width="10" height="10"/>
+    <!-- Actual (drifted) overlay -->
+    <g transform="translate(6,6) rotate(6 26 26)">
+      <rect x="18" y="18" width="18" height="18" stroke="red"/>
+      <rect x="36" y="28" width="10" height="10" stroke="red"/>
+    </g>
+  </svg>
+  
+
+<div>
+
+    <div>
+
+        <p>HLDD Generation</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <!-- Stacked documents -->
+            <rect x="12" y="10" width="28" height="40" rx="2" stroke="#333" stroke-width="2" fill="white"/>
+            <rect x="16" y="14" width="28" height="40" rx="2" stroke="#666" stroke-width="1.5" fill="white"/>
+            
+            <!-- Connection nodes (high-level design) -->
+            <circle cx="48" cy="16" r="3" fill="#333"/>
+            <circle cx="56" cy="28" r="3" fill="#333"/>
+            <circle cx="40" cy="28" r="3" fill="#333"/>
+            <line x1="48" y1="16" x2="56" y2="28" stroke="#333" stroke-width="2"/>
+            <line x1="48" y1="16" x2="40" y2="28" stroke="#333" stroke-width="2"/>
+          </svg>
+
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <!-- Flowchart nodes -->
+            <rect x="8" y="10" width="12" height="12" fill="white" stroke="#333" stroke-width="2"/>
+            <rect x="8" y="30" width="12" height="12" fill="white" stroke="#333" stroke-width="2"/>
+            <circle cx="14" cy="52" r="6" stroke="#333" stroke-width="2" fill="white"/>
+            <line x1="14" y1="22" x2="14" y2="30" stroke="#333" stroke-width="2"/>
+            <line x1="14" y1="42" x2="14" y2="46" stroke="#333" stroke-width="2"/>
+            
+            <!-- Document -->
+            <rect x="30" y="14" width="24" height="36" rx="2" stroke="#333" stroke-width="2" fill="white"/>
+            <line x1="36" y1="22" x2="48" y2="22" stroke="#333" stroke-width="2"/>
+            <line x1="36" y1="30" x2="48" y2="30" stroke="#333" stroke-width="2"/>
+            <line x1="36" y1="38" x2="44" y2="38" stroke="#333" stroke-width="2"/>
+            
+            <!-- Arrow to document -->
+            <line x1="20" y1="30" x2="30" y2="32" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L6,3 z" fill="#333"/>
+              </marker>
+            </defs>
+          </svg>
+
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <!-- Document -->
+            <rect x="22" y="10" width="24" height="36" rx="2" stroke="#333" stroke-width="2" fill="white"/>
+            <line x1="28" y1="18" x2="40" y2="18" stroke="#333" stroke-width="2"/>
+            <line x1="28" y1="26" x2="40" y2="26" stroke="#333" stroke-width="2"/>
+            <line x1="28" y1="34" x2="36" y2="34" stroke="#333" stroke-width="2"/>
+            
+            <!-- Lightbulb (idea/design) -->
+            <circle cx="34" cy="54" r="8" stroke="#333" stroke-width="2" fill="white"/>
+            <rect x="30" y="62" width="8" height="4" fill="#333"/>
+            <line x1="34" y1="46" x2="34" y2="40" stroke="#333" stroke-width="2"/>
+          </svg>
+
+          
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <!-- Document -->
+            <rect x="10" y="8" width="28" height="40" rx="2" ry="2" stroke="#333" stroke-width="2" fill="white"/>
+            <line x1="16" y1="16" x2="32" y2="16" stroke="#333" stroke-width="2"/>
+            <line x1="16" y1="24" x2="32" y2="24" stroke="#333" stroke-width="2"/>
+            <line x1="16" y1="32" x2="28" y2="32" stroke="#333" stroke-width="2"/>
+            
+            <!-- Gear (generation) -->
+            <circle cx="46" cy="42" r="8" stroke="#333" stroke-width="2" fill="white"/>
+            <path d="M46 33 v-3 M46 51 v-3 M55 42 h-3 M37 42 h-3 
+                     M51 37 l-2 2 M41 47 l-2 2 M41 37 l-2 -2 M51 47 l-2 -2" 
+                  stroke="#333" stroke-width="2"/>
+            <circle cx="46" cy="42" r="3" fill="#333"/>
+            
+            <!-- High-level design nodes -->
+            <circle cx="52" cy="14" r="3" fill="#333"/>
+            <circle cx="42" cy="6" r="3" fill="#333"/>
+            <circle cx="60" cy="6" r="3" fill="#333"/>
+            <line x1="42" y1="6" x2="52" y2="14" stroke="#333" stroke-width="2"/>
+            <line x1="60" y1="6" x2="52" y2="14" stroke="#333" stroke-width="2"/>
+          </svg>
+          
+    </div>
+
+
+    <div>
+        <p>HLDD Upgradation</p>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <!-- Blueprint/document -->
+            <rect x="10" y="10" width="36" height="44" rx="2" stroke="#1E3A8A" stroke-width="2" fill="#EFF6FF"/>
+            <line x1="16" y1="22" x2="36" y2="22" stroke="#1E3A8A" stroke-width="2"/>
+            <line x1="16" y1="30" x2="36" y2="30" stroke="#1E3A8A" stroke-width="2"/>
+            <line x1="16" y1="38" x2="28" y2="38" stroke="#1E3A8A" stroke-width="2"/>
+            
+            <!-- Up arrow (upgrade) -->
+            <path d="M48 48V28M40 36l8-8 8 8" stroke="#16A34A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 3v5h5" stroke="currentColor" stroke-width="1.5" />
+            <path d="M7.5 11h6M7.5 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 20v-4m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="10" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10h4M7 13h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13 18h2v-2h2v-2h2v-2h2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M21 10v-2m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          
+          
+    <div>
+
+        <div>
+
+            <p>HLDD standard<p>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <!-- Document outline -->
+                    <rect x="12" y="8" width="40" height="48" rx="4" ry="4" stroke="#2C3E50" stroke-width="2" fill="white"/>
+                    
+                    <!-- Folded corner -->
+                    <path d="M40 8 L52 20 L40 20 Z" fill="#BDC3C7" stroke="#2C3E50" stroke-width="1"/>
+                  
+                    <!-- Hierarchy blocks (High Level Design) -->
+                    <rect x="20" y="24" width="24" height="4" fill="#2980B9"/>
+                    <rect x="20" y="32" width="16" height="4" fill="#3498DB"/>
+                    <rect x="20" y="40" width="12" height="4" fill="#5DADE2"/>
+                  
+                    <!-- Standard checkmark -->
+                    <circle cx="48" cy="46" r="8" fill="#27AE60" stroke="#1E8449" stroke-width="2"/>
+                    <path d="M44 46 L47 49 L52 43" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <title>HLD Standard - Flowchart Shield</title>
+                    <!-- Doc -->
+                    <rect x="10" y="8" width="34" height="48" rx="4" stroke="#2C3E50" stroke-width="2" fill="white"/>
+                    <path d="M32 8l12 12H32z" fill="#E6EEF5" stroke="#2C3E50" stroke-width="1"/>
+                    <!-- Flowchart nodes -->
+                    <rect x="16" y="22" width="22" height="4" rx="2" fill="#2980B9"/>
+                    <rect x="16" y="30" width="14" height="4" rx="2" fill="#3498DB"/>
+                    <rect x="16" y="38" width="8"  height="4" rx="2" fill="#5DADE2"/>
+                    <!-- Connectors -->
+                    <path d="M27 26v4M23 34v4" stroke="#2C3E50" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Shield badge -->
+                    <path d="M48 28c5 2 8 2 12 0v9c0 6-5.3 10.4-12 12-6.7-1.6-12-6-12-12v-9c4 2 7 2 12 0Z" fill="#1ABC9C" stroke="#0F7F69" stroke-width="2"/>
+                    <path d="M44.5 39.5l3 3 6-6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <title>HLD Standard - Blueprint</title>
+                    <!-- Blueprint doc -->
+                    <rect x="10" y="8" width="40" height="48" rx="4" fill="#1E3A8A"/>
+                    <rect x="10" y="8" width="40" height="48" rx="4" stroke="#0B255E" stroke-width="2"/>
+                    <!-- Grid -->
+                    <g opacity="0.25" stroke="white" stroke-width="0.8">
+                      <path d="M16 12v40M22 12v40M28 12v40M34 12v40M40 12v40M46 12v40"/>
+                      <path d="M12 18h36M12 24h36M12 30h36M12 36h36M12 42h36M12 48h36"/>
+                    </g>
+                    <!-- Architecture blocks -->
+                    <rect x="16" y="22" width="24" height="5" rx="2" fill="white" opacity="0.9"/>
+                    <rect x="16" y="31" width="18" height="5" rx="2" fill="white" opacity="0.9"/>
+                    <rect x="16" y="40" width="12" height="5" rx="2" fill="white" opacity="0.9"/>
+                    <!-- Standard check -->
+                    <circle cx="50" cy="50" r="8" fill="#22C55E" stroke="#15803D" stroke-width="2"/>
+                    <path d="M46 50l3 3 6-6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <title>HLD Standard - Ribbon Badge</title>
+                    <!-- Doc -->
+                    <rect x="12" y="8" width="34" height="48" rx="4" stroke="#334155" stroke-width="2" fill="white"/>
+                    <path d="M34 8l12 12H34z" fill="#E5E7EB" stroke="#334155" stroke-width="1"/>
+                    <!-- HLD lines -->
+                    <rect x="18" y="24" width="20" height="3" rx="1.5" fill="#0EA5E9"/>
+                    <rect x="18" y="31" width="14" height="3" rx="1.5" fill="#38BDF8"/>
+                    <rect x="18" y="38" width="10" height="3" rx="1.5" fill="#7DD3FC"/>
+                    <!-- Ribbon -->
+                    <circle cx="48" cy="40" r="8" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
+                    <path d="M46 38l2 3 3-5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M44 48l0 6 4-2 4 2 0-6" fill="#F59E0B" stroke="#B45309" stroke-width="1.5" stroke-linejoin="round"/>
+                  </svg>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <title>HLD Standard - Pillars</title>
+                    <!-- Doc -->
+                    <rect x="12" y="8" width="36" height="48" rx="4" fill="white" stroke="#1F2937" stroke-width="2"/>
+                    <!-- Pillars -->
+                    <rect x="18" y="22" width="6" height="20" rx="2" fill="#0EA5E9"/>
+                    <rect x="28" y="20" width="6" height="22" rx="2" fill="#38BDF8"/>
+                    <rect x="38" y="24" width="6" height="18" rx="2" fill="#7DD3FC"/>
+                    <rect x="16" y="18" width="30" height="3" rx="1.5" fill="#1F2937" opacity="0.3"/>
+                    <rect x="16" y="44" width="30" height="3" rx="1.5" fill="#1F2937" opacity="0.3"/>
+                    <!-- Check -->
+                    <circle cx="50" cy="46" r="8" fill="#22C55E" stroke="#15803D" stroke-width="2"/>
+                    <path d="M46 46l3 3 6-6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  
+        </div>
+
+        <div>
+            <p>Privileged access management</p>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" aria-label="PAM Badge">
+                <title>PAM - Filled Shield Padlock</title>
+                <path fill="#1F6FEB" d="M12 2.5l7 3.1v5.1c0 5.4-3.8 8.7-7 9.9-3.2-1.2-7-4.5-7-9.9V5.6l7-3.1z"/>
+                <path fill="#0B1F3A" d="M8.5 12.2a3.5 3.5 0 117 0v.3h.8a.9.9 0 01.9.9v3.2a.9.9 0 01-.9.9H7.7a.9.9 0 01-.9-.9v-3.2a.9.9 0 01.9-.9h.8v-.3zm1.6 0a2 2 0 104 0v-.3a2 2 0 10-4 0v.3z"/>
+                <!-- Crown dot -->
+                <circle cx="12" cy="6" r="1.1" fill="#FFD54A"/>
+              </svg>
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" aria-label="PAM Split Shield">
+                <title>PAM - Split Shield Crown Keyhole</title>
+                <!-- Left half -->
+                <path d="M12 2.6l-7 3v5.2c0 4.7 3.1 7.8 7 9.1V2.6z" fill="#3B82F6"/>
+                <!-- Right half -->
+                <path d="M12 2.6l7 3v5.2c0 4.7-3.1 7.8-7 9.1V2.6z" fill="#0F172A"/>
+                <!-- Crown line -->
+                <path d="M7.6 7.3l1.1-1.6 1.4 1.6 1.4-1.6 1.1 1.6" stroke="#FFD54A" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Keyhole -->
+                <circle cx="15.5" cy="12.3" r="1.2" fill="#FFFFFF"/>
+                <rect x="14.9" y="13.1" width="1.2" height="2.2" rx=".6" fill="#FFFFFF"/>
+              </svg>
+
+              
+        </div>
+
