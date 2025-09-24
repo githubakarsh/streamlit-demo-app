@@ -117,7 +117,13 @@ page_lookup = {
     "Chat Assistant": chat_page,
 }
 
+
+
+
 if _selected_section:
-    page_lookup[_selected_section].run()
+    # Run the selected page directly
+    
+    selected_page = page_lookup[_selected_section]
+    selected_page.run()
 else:
     pg.run()
